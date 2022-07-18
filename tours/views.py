@@ -14,7 +14,6 @@ def tour_view(request, id):
     return render(request, 'tour.html')
 
 
-
 def custom_handler404(request, exeption):
     return HttpResponseNotFound
 
