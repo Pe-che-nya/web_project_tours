@@ -272,8 +272,17 @@ def departure_view(request, departure):
     return render(request, 'departure.html')
 
 
-def tour_view(request, id):
-    return render(request, 'tour.html')
+def tour_view(request, num_tour):
+    about_tour = tours[num_tour]
+    context = {'title': title,
+        #'title_tour': about_tour['title'],
+               'subtitle': subtitle,
+               'description': description,
+               'departures': departures,
+               'about_tour': about_tour,
+               'num_tours': type(num_tour)
+               }
+    return render(request, 'tour.html', context=context)
 
 
 def custom_handler404(request, exeption):
