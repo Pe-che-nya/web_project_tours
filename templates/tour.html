@@ -1,10 +1,11 @@
 {% extends "base.html" %}
+{% load customfiltertag %}
     {% block content %}
         <main>
         <section class="mt-3 pb-5">
-          <h1 class="display-3 mt-4">{{ about_tour.title }} ★*4</h1>
+          <h1 class="display-3 mt-4">{{ about_tour.title }} {{ about_tour.stars | get_stars | safe}}</h1>
           <!-- HERO -->
-          <p class="lead">{{ about_tour.country }} {{ about_tours.departure }} {{ about_tour.nights }} ночей</p>
+          <p class="lead">{{ about_tour.country }} {{ about_tour.departure | filter_departure:departures }} {{ about_tour.nights }} ночей</p>
           <img src={{ about_tour.picture }} class="w-75" alt="">
           <p class="my-4 w-75">{{ about_tour.description }}</p>
           <a href="#" class="btn btn-success btn-lg">Купить тур за {{ about_tour.price }}</a>

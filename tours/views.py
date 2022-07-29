@@ -257,6 +257,7 @@ def random_choice_tour(tours,len_list):
         sample_tours[k] = tours[k]
     return sample_tours
 
+
 def main_view(request):
     sample_tours=random_choice_tour(tours, 6)
     context = {'title': title,
