@@ -8,6 +8,7 @@ register = template.Library()
 def filter_departure(text, dict):
     return dict[text]
 
+
 @register.filter()
 def get_stars(count):
     star="&#9733;"
@@ -15,5 +16,11 @@ def get_stars(count):
     for i in range(int(count)):
         stars+=star
     return stars
+
+
+# @register.filter()
+# def get_departure(departure):
+
+
 
 

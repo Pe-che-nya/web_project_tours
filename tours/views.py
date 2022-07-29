@@ -259,18 +259,31 @@ def random_choice_tour(tours,len_list):
 
 
 def main_view(request):
-    sample_tours=random_choice_tour(tours, 6)
+    sample_tours = random_choice_tour(tours, 6)
     context = {'title': title,
                'subtitle': subtitle,
                'description': description,
                'departures': departures,
                'tours': sample_tours,
+
                }
     return render(request, 'index.html', context=context)
 
 
 def departure_view(request, departure):
-    return render(request, 'departure.html')
+    depart_country = {}
+    for i in tours:
+         if tours.get(i)['departure'] == departure:
+             depart_country[i]=tours.get(i)
+
+    context = {'title': title,
+               'subtitle': subtitle,
+               'description': description,
+               'departures': departures,
+               'tours': depart_country,
+
+               }
+    return render(request, 'departure.html', context=context)
 
 
 def tour_view(request, num_tour):
