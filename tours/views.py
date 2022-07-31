@@ -5,8 +5,8 @@ import random as rnd
 
 title = "Stepik Travel"
 subtitle = "Для тех, кого отвлекают дома"
-description = """Лучшие направления, где никто не будет вам мешать сидеть на берегу и изучать программирование, 
-дизайн, разработку игр и управление продуктами """
+description = """Лучшие направления, где никто не будет вам мешать сидеть на берегу и изучать программирование,
+ дизайн, разработку игр и управление продуктами """
 departures = {"msk": "Из Москвы", "spb": "Из Петербурга", "nsk": "Из Новосибирска", "ekb": "Из Екатеринбурга",
               "kazan": "Из Казани"}
 
@@ -251,7 +251,8 @@ tours = {
 
 }
 
-def random_choice_tour(tours,len_list):
+
+def random_choice_tour(tours, len_list):
     sample_tours = {}
     for k in rnd.sample(list(tours.keys()), k=len_list):
         sample_tours[k] = tours[k]
@@ -273,14 +274,15 @@ def main_view(request):
 def departure_view(request, departure):
     depart_country = {}
     for i in tours:
-         if tours.get(i)['departure'] == departure:
-             depart_country[i]=tours.get(i)
+        if tours.get(i)['departure'] == departure:
+            depart_country[i] = tours.get(i)
 
     context = {'title': title,
                'subtitle': subtitle,
                'description': description,
                'departures': departures,
                'tours': depart_country,
+               'departure': departure,
 
                }
     return render(request, 'departure.html', context=context)
@@ -289,7 +291,6 @@ def departure_view(request, departure):
 def tour_view(request, num_tour):
     about_tour = tours[num_tour]
     context = {'title': title,
-        #'title_tour': about_tour['title'],
                'subtitle': subtitle,
                'description': description,
                'departures': departures,

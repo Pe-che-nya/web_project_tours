@@ -1,10 +1,10 @@
 {% extends "base.html" %}
+{% load customfiltertag %}
+
   {% block content %}
   <main class="container mt-3">
-    <h1 class="display-5 mt-4">Летим {{ departures.ekb }}</h1>
-    <p class="mb-4">Найдено 15 туров, от 26 000 до 84 600 и от 4 ночей до 15 ночей</p>
-    <p>{{ depart_country }}</p>
-      <p>{{ departure }}</p>
+    <h1 class="display-5 mt-4">Летим {{ departures | func:departure }}</h1>
+    <p class="mb-4">Найдено {{ tours |length }} {{ tours |length | ru_plural:"тур,тура,туров" }}, от {{ tours |min_smth:"price" }} до {{ tours |max_smth:"price" }} и от {{ tours |min_smth:"nights" }} ночей до {{ tours |max_smth:"nights" }} ночей</p>
       <!-- CARDS -->
     <div class="row mt-5">
         {% for hotel in tours.items %}
