@@ -17,12 +17,12 @@ from django.contrib import admin
 from django.urls import path
 import tours.views as tours_views
 
-handler404 = tours_views.custom_handler404
-handler500 = tours_views.custom_handler500
+# handler404 = tours_views.custom_handler404
+# handler500 = tours_views.custom_handler500
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', tours_views.main_view),
     path('departure/<str:departure>', tours_views.departure_view),
-    path('tour/<int:num_tour>', tours_views.tour_view)
+    path('tour/<int:num_tour>', tours_views.tour_view),
 ]

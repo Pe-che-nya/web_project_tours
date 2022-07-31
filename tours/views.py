@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseNotFound, HttpResponseForbidden
+from django.http import HttpResponseNotFound, HttpResponseServerError
 import random as rnd
 
 
@@ -305,4 +305,4 @@ def custom_handler404(request, exeption):
 
 
 def custom_handler500(request):
-    return HttpResponseForbidden
+    return HttpResponseServerError
